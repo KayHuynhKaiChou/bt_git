@@ -8,7 +8,7 @@ import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
 
 interface PostUser {
-    nameUser : string | undefined,
+    nameUser ?: string,
     id : number,
     title : string
   }

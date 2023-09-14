@@ -9,7 +9,7 @@ import { User } from './Model/User'
 function App() {
 
   interface PostUser {
-    nameUser : string | undefined,
+    nameUser ?: string ,
     id : number,
     title : string
   }
@@ -31,7 +31,7 @@ function App() {
     })
     const result : [Post[], User[]] = await Promise.all([resPosts.json() , resUsers.json()])
     const [posts , users] = result
-    const refreshPosts: Array<{id:number,nameUser:string | undefined,title:string}> = posts.map(post => {
+    const refreshPosts: Array<{id:number ,nameUser?:string ,title:string}> = posts.map(post => {
       const nameUser : string | undefined = users.find(user => user.id === post.userId)?.name 
       return {
         id: post.id,
