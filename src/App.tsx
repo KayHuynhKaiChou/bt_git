@@ -8,8 +8,13 @@ import { User } from './Model/User'
 
 function App() {
 
-  const [posts, setPosts] = useState<Post[]>([])
-  const [users, setUsers] = useState<Array<User>>([])
+  interface PostUser {
+    nameUser : string | undefined,
+    id : number,
+    title : string
+  }
+
+  const [ posts , setPosts] = useState<PostUser[]>([])
 
   const fetchAPI:() => void = async () => {
     const resPosts = await fetch('https://jsonplaceholder.typicode.com/posts',{
@@ -26,7 +31,7 @@ function App() {
     })
     const result : [Post[], User[]] = await Promise.all([resPosts.json() , resUsers.json()])
     const [posts , users] = result
-    posts.map(post => {
+    const refreshPosts: Array<{id:number,nameUser:string | undefined,title:string}> = posts.map(post => {
       const nameUser : string | undefined = users.find(user => user.id === post.userId)?.name 
       return {
         id: post.id,
@@ -34,8 +39,8 @@ function App() {
         title: post.title
       }
     })
-    setPosts(posts)
-    setUsers(users)
+    setPosts(refreshPosts)
+    // setUsers(users)
   }
 
   useEffect(() => {

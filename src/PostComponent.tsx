@@ -6,10 +6,15 @@ import TableContainer from '@mui/material/TableContainer';
 import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
-import { Post } from './Model/Post';
+
+interface PostUser {
+    nameUser : string | undefined,
+    id : number,
+    title : string
+  }
 
 type Props = {
-    posts : Array<Post> // hoặc Post[]
+    posts : Array<PostUser> // hoặc Post[]
 }
 
 const PostComponent: React.FC<Props> = ({posts}) => {
@@ -20,7 +25,7 @@ const PostComponent: React.FC<Props> = ({posts}) => {
             <TableHead>
             <TableRow>
                 <TableCell>idPost</TableCell>
-                <TableCell align="center">UserId</TableCell>
+                <TableCell align="center">UserName</TableCell>
                 <TableCell align="center">Title&nbsp;</TableCell>
             </TableRow>
             </TableHead>
@@ -33,7 +38,7 @@ const PostComponent: React.FC<Props> = ({posts}) => {
                 <TableCell component="th" scope="row">
                     {post.id}
                 </TableCell>
-                <TableCell align="left">{post.userId}</TableCell>
+                <TableCell align="left">{post.nameUser}</TableCell>
                 <TableCell align="left">{post.title}</TableCell>
                 </TableRow>
             ))}
