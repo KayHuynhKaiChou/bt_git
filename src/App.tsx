@@ -32,7 +32,7 @@ function App() {
     })
     const result : [Post[], User[]] = await Promise.all([resPosts.json() , resUsers.json()])
     const [posts , users] = result
-    const refreshPosts: Array<{id:number,nameUser:string | undefined,title:string}> = posts.map(post => {
+    const filterPosts: Array<{id:number,nameUser:string | undefined,title:string}> = posts.map(post => {
       const nameUser : string | undefined = users.find(user => user.id === post.userId)?.name 
       return {
         id: post.id,
@@ -40,7 +40,7 @@ function App() {
         title: post.title
       }
     })
-    setPosts(refreshPosts)
+    setPosts(filterPosts)
     // setUsers(users)
   }
 
