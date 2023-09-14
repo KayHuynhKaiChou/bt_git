@@ -20,7 +20,7 @@ type Props = {
 const PostComponent: React.FC<Props> = ({posts}) => {
 
     return (
-        <TableContainer component={Paper}>
+        <TableContainer component={Paper} style={{maxHeight:"500px"}}>
         <Table sx={{ minWidth: 650 }} aria-label="simple table">
             <TableHead>
             <TableRow>

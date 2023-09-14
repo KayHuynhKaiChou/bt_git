@@ -5,6 +5,7 @@ import './App.css'
 import PostComponent from './PostComponent'
 import { Post } from './Model/Post'
 import { User } from './Model/User'
+import { Button } from '@mui/material'
 
 function App() {
 
@@ -59,9 +60,7 @@ function App() {
       </div>
       <h1>Vite + React</h1>
       <div className="card">
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
+        <Button>View detail</Button>
       </div>
       <PostComponent posts = {posts}/>
     </>
